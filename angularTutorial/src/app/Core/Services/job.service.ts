@@ -12,9 +12,9 @@ export class JobService {
 
   getAllJobs():Observable<Job[]>{
     let header = new HttpHeaders();
-    header = header.set('key','key_value');
-    return this.http.get<Job[]>("url_from_postman",{
-      headers: {'key':'key_value'}
+    header = header.set('Ocp-Apim-Subscription-Key','b7e325cf50db42b0b60a5d112390a6c3');
+    return this.http.get<Job[]>("https://recruitingapi.azure-api.net/recruiting/api/Jobs",{
+      headers: {'Ocp-Apim-Subscription-Key':'b7e325cf50db42b0b60a5d112390a6c3'}
     });
   }
 }
