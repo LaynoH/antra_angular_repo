@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AccountService } from './Core/Services/account.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'AntraHRM SPA ';
+
+  constructor(private accountService: AccountService){}
+
+  ngOnInit(){
+    if(localStorage.getItem('toke') != null){
+      this.accountService.ValidJWTToken();
+    }
+  }
 }

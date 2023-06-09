@@ -11,8 +11,8 @@ export class JobService {
   constructor(private http:HttpClient) { }
 
   getAllJobs():Observable<Job[]>{
-    let header = new HttpHeaders();
-    header = header.set('Ocp-Apim-Subscription-Key','ea23037be2ba416a9c9c368c243d2f0a');
+    //let header = new HttpHeaders();
+    //header = header.set('Ocp-Apim-Subscription-Key','ea23037be2ba416a9c9c368c243d2f0a');
     return this.http.get<Job[]>("https://hrm2023apigateway.azure-api.net/recruiting/api/Jobs",{
       headers: {'Ocp-Apim-Subscription-Key':'ea23037be2ba416a9c9c368c243d2f0a'}
     });

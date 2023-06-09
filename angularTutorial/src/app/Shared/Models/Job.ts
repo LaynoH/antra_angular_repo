@@ -3,5 +3,5 @@ export interface Job {
     title:              string;
     description:        string;
     startDate:          string;
-    numberOfPostitions: number;
+    numberOfPositions: number;
 }

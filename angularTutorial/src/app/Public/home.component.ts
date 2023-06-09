@@ -15,6 +15,8 @@ export class HomeComponent implements OnInit{
   ngOnInit(): void {
       this.jobService .getAllJobs().subscribe(data =>
         this.availableJobs = data
+        
       ); 
+      //console.log(this.availableJobs);
   }
 }
