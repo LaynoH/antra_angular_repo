@@ -4,14 +4,15 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { BehaviorSubject, Observable, map } from 'rxjs';
 import { Login } from 'src/app/Shared/Models/Login';
 import { Register } from 'src/app/Shared/Models/Register';
-import { User } from 'src/app/Shared/Models/User';
+import { User, UserWAdmin } from 'src/app/Shared/Models/User';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
-
-  private currentUserSubject = new BehaviorSubject<User>({} as User);
+  // UserWAdmin: for admin guard;
+  // User: for user login guard
+  private currentUserSubject = new BehaviorSubject<UserWAdmin>({} as UserWAdmin);
   public currentUser = this.currentUserSubject.asObservable();
 
   private isLoggedInSubject = new BehaviorSubject<boolean>(false);
@@ -42,7 +43,7 @@ export class AccountService {
 
   Logout(){
     localStorage.removeItem('token');
-    this.currentUserSubject.next({} as User);
+    this.currentUserSubject.next({} as UserWAdmin);
     this.isLoggedInSubject.next(false);
   }
 
@@ -52,12 +53,12 @@ export class AccountService {
     if(tokenValue && !this.jwtHelper.isTokenExpired(tokenValue)){
       const decodedToken = this.jwtHelper.decodeToken(tokenValue);
       this.isLoggedInSubject.next(true);
-      const newUser:User = {
+      const newUser:UserWAdmin = {
         email: decodedToken.email,
         firstName: decodedToken.firstName,
         lastName: decodedToken.lastName,
-        password: decodedToken.password
-
+        password: decodedToken.password,
+        isAdmin:true,
       };
       this.currentUserSubject.next(newUser);
     }

@@ -27,7 +27,8 @@ import { JwtAdderInterceptor } from './Core/Interceptors/jwt-adder.interceptor';
     FormsModule,
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: JwtAdderInterceptor, multi:true}
+    {provide: HTTP_INTERCEPTORS, useClass: JwtAdderInterceptor, multi:true},
+
   ],
   bootstrap: [AppComponent]
 })
