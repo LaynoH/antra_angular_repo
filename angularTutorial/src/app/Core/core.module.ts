@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './Layout/header.component';
 import { FooterComponent } from './Layout/footer.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http'
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -12,11 +13,13 @@ import { HttpClient, HttpClientModule } from '@angular/common/http'
   ],
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule,
   ],
   exports:[
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    
   ]
 })
 export class CoreModule { }

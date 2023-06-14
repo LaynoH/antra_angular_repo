@@ -12,6 +12,7 @@ import { FooterComponent } from './Core/Layout/footer.component';
 import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtAdderInterceptor } from './Core/Interceptors/jwt-adder.interceptor';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { JwtAdderInterceptor } from './Core/Interceptors/jwt-adder.interceptor';
     SharedModule,
     NgbModule,
     FormsModule,
+    RouterModule,
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtAdderInterceptor, multi:true},
